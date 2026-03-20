@@ -1,0 +1,67 @@
+{
+    "style": ".legend-wrap{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid #eeeeee} .legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#666666} .legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0} .score-hidden{font-size:1px;line-height:0;color:transparent;margin:0;padding:0;height:1px;overflow:hidden}",
+    "script": "setTimeout(function() { var slides = document.querySelectorAll('.blox-slides'); slides.forEach(function(slide) { var scoreEl = slide.querySelector('.score-hidden'); var circle = slide.querySelector('.ring-circle'); var textEl = slide.querySelector('.ring-text'); var statusEl = slide.querySelector('.status-label'); if (!scoreEl || !circle || !textEl) return; var score = parseFloat((scoreEl.textContent || scoreEl.innerText || '').trim()); if (isNaN(score)) return; var pct = score > 1 ? score : score * 100; var color = pct >= 80 ? '#1D9E75' : pct >= 60 ? '#EF9F27' : '#E24B4A'; var status = pct >= 80 ? 'Good' : pct >= 60 ? 'Fair' : 'Critical'; var circ = 2 * Math.PI * 42; circle.setAttribute('stroke', color); circle.setAttribute('stroke-dasharray', circ.toFixed(1)); circle.setAttribute('stroke-dashoffset', (circ * (1 - pct / 100)).toFixed(1)); textEl.setAttribute('fill', color); textEl.textContent = Math.round(pct) + '%'; if (statusEl) { statusEl.style.color = color; statusEl.textContent = status; } }); }, 600);",
+    "title": "",
+    "showCarousel": true,
+    "body": [
+        {
+            "type": "Container",
+            "style": {
+                "background-color": "#ffffff",
+                "border": "1px solid #e0e0e0",
+                "border-radius": "12px",
+                "padding": "16px 20px"
+            },
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "VESSEL HEALTH SCORES",
+                    "horizontalAlignment": "left",
+                    "style": {
+                        "color": "#999999",
+                        "font-size": "11px",
+                        "font-weight": 600,
+                        "letter-spacing": "1px",
+                        "margin-bottom": "16px"
+                    }
+                },
+                {
+                    "type": "TextBlock",
+                    "class": "score-hidden",
+                    "text": "{panel:Count}",
+                    "horizontalAlignment": "left",
+                    "style": {
+                        "font-size": "1px",
+                        "color": "transparent"
+                    }
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "<div style='display:flex;justify-content:center;'><svg width='110' height='110' viewBox='0 0 110 110'><circle cx='55' cy='55' r='42' fill='none' stroke='rgba(128,128,128,.12)' stroke-width='10'/><circle class='ring-circle' cx='55' cy='55' r='42' fill='none' stroke='#cccccc' stroke-width='10' stroke-dasharray='263.9' stroke-dashoffset='263.9' stroke-linecap='round' transform='rotate(-90 55 55)'/><text class='ring-text' x='55' y='63' text-anchor='middle' font-size='22' font-weight='500' fill='#cccccc'>-</text></svg></div>",
+                    "horizontalAlignment": "center"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "{panel:Name}",
+                    "horizontalAlignment": "center",
+                    "style": {
+                        "color": "#000000",
+                        "font-size": "15px",
+                        "font-weight": 600,
+                        "margin-top": "8px"
+                    }
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "<span class='status-label' style='font-size:13px;font-weight:500;color:#cccccc;'>-</span>",
+                    "horizontalAlignment": "center"
+                },
+                {
+                    "type": "TextBlock",
+                    "text": "<div class='legend-wrap'><div class='legend-item'><span class='legend-dot' style='background:#1D9E75;'></span>Good (80+)</div><div class='legend-item'><span class='legend-dot' style='background:#EF9F27;'></span>Fair (60–79)</div><div class='legend-item'><span class='legend-dot' style='background:#E24B4A;'></span>Critical (&lt;60)</div></div>",
+                    "horizontalAlignment": "left"
+                }
+            ]
+        }
+    ]
+}
