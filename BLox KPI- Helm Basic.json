@@ -1,0 +1,319 @@
+{
+    "style": "@keyframes fadeSlideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } } .kpi-card { animation: fadeSlideUp 0.7s ease forwards; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease; cursor: pointer; border: 1.5px solid transparent; } .kpi-card:active { transform: translateY(0px) scale(0.98); } .tt { position: relative; display: inline-block; cursor: help; border-bottom: 1px dashed #8a9bae; } .tt .tb { visibility: hidden; opacity: 0; background-color: #1a2535; color: #cdd9e5; font-size: 11px; padding: 6px 12px; border-radius: 8px; border: 1px solid #2e3f54; position: absolute; z-index: 999; bottom: 130%; left: 50%; transform: translateX(-50%); white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,0.25); transition: opacity 0.2s ease; pointer-events: none; } .tt .tb::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #2e3f54; } .tt:hover .tb { visibility: visible; opacity: 1; }",
+    "script": "var activeCard=null;document.querySelectorAll('.kpi-card').forEach(function(card){setTimeout(function(){card.style.animation='none';},800);function resetCard(c){c.style.transform='translateY(0) scale(1)';c.style.boxShadow='none';c.style.backgroundColor='#f5f5f3';c.style.borderColor='transparent';}function activateCard(c){c.style.transform='translateY(-6px) scale(1.03)';c.style.boxShadow='0 4px 14px rgba(100,180,255,0.12)';c.style.backgroundColor='#ebebea';c.style.borderColor='rgba(59,130,246,0.18)';}card.addEventListener('mouseenter',function(){if(activeCard&&activeCard!==card){resetCard(activeCard);}activeCard=card;activateCard(card);});card.addEventListener('mouseleave',function(){resetCard(card);activeCard=null;});});",
+    "title": "",
+    "titleStyle": [
+        {
+            "display": "none"
+        }
+    ],
+    "showCarousel": false,
+    "body": [
+        {
+            "type": "Container",
+            "style": {
+                "display": "flex",
+                "flex-direction": "row",
+                "gap": "10px",
+                "padding": " 1% 0% 0% 1%",
+                "width": "99%"
+            },
+            "items": [
+                {
+                    "type": "Container",
+                    "class": "kpi-card",
+                    "style": {
+                        "background-color": "#f5f5f3",
+                        "border-radius": "16px",
+                        "padding": "24px 24px",
+                        "width": "50%",
+                        "height": "auto",
+                        "box-shadow": " rgba(0, 0, 0, 0.08) 0px 4px 6px -4px",
+                        "display": "none"
+                    },
+                    "selectAction": {
+                        "type": "JTD",
+                        "title": "View Audits",
+                        "data": {
+                            "dashboardId": "64138565b8b83c0034434506",
+                            "panelsToInclude": [],
+                            "args": {
+                                "displayDashboardsPane": false,
+                                "displayFilterPane": true,
+                                "drilledDashboardDisplayType": 2
+                            }
+                        }
+                    },
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "🛡️ Audits",
+                            "horizontalAlignment": "left",
+                            "style": {
+                                "color": "#000000",
+                                "font-size": "17px",
+                                "font-weight": 600,
+                                "margin-bottom": "0px"
+                            }
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-value-au' style='font-size:36px;font-weight:600;color:blue;'>{panel:Audits}</span>",
+                            "horizontalAlignment": "left"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-change-au' style='font-size:12px;font-weight:500;color:#aaaaaa;'>Total Open {panel:Total Open}</span>",
+                            "horizontalAlignment": "left"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "class": "kpi-card",
+                    "style": {
+                        "background-color": "#f5f5f3",
+                        "border-radius": "16px",
+                        "padding": "24px 24px",
+                        "width": "50%",
+                        "height": "auto",
+                        "box-shadow": " rgba(0, 0, 0, 0.08) 0px 4px 6px -4px",
+                        "display": "none"
+                    },
+                    "selectAction": {
+                        "type": "JTD",
+                        "title": "View Corrective Actions",
+                        "data": {
+                            "dashboardId": "64138565b8b83c0034434506",
+                            "panelsToInclude": [],
+                            "args": {
+                                "displayDashboardsPane": false,
+                                "displayFilterPane": true,
+                                "drilledDashboardDisplayType": 2
+                            }
+                        }
+                    },
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "🩹 Corrective Actions",
+                            "horizontalAlignment": "left",
+                            "style": {
+                                "color": "#000000",
+                                "font-size": "17px",
+                                "font-weight": 600,
+                                "margin-bottom": "6px"
+                            }
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-value-ca' style='font-size:36px;font-weight:600;color:blue;'>{panel:Corrective Actions}</span>",
+                            "horizontalAlignment": "left"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-change-ca' style='font-size:12px;font-weight:500;color:#aaaaaa;'>Unscheduled {panel:Unscheduled}</span>",
+                            "horizontalAlignment": "left"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "class": "kpi-card",
+                    "style": {
+                        "background-color": "#f5f5f3",
+                        "border-radius": "16px",
+                        "padding": "24px 24px",
+                        "width": "50%",
+                        "height": "auto",
+                        "box-shadow": " rgba(0, 0, 0, 0.08) 0px 4px 6px -4px",
+                        "display": "none"
+                    },
+                    "selectAction": {
+                        "type": "JTD",
+                        "title": "View Forms",
+                        "data": {
+                            "dashboardId": "64138565b8b83c0034434506",
+                            "panelsToInclude": [],
+                            "args": {
+                                "displayDashboardsPane": false,
+                                "displayFilterPane": true,
+                                "drilledDashboardDisplayType": 2
+                            }
+                        }
+                    },
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "📝 Forms",
+                            "horizontalAlignment": "left",
+                            "style": {
+                                "color": "#000000",
+                                "font-size": "17px",
+                                "font-weight": 600,
+                                "margin-bottom": "6px"
+                            }
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-value-fo' style='font-size:36px;font-weight:600;color:blue;'>{panel:Forms}</span>",
+                            "horizontalAlignment": "left"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-change-fo' style='font-size:12px;font-weight:500;color:#aaaaaa;'>Total Open {panel:Total Open Forms}</span>",
+                            "horizontalAlignment": "left"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "class": "kpi-card",
+                    "style": {
+                        "background-color": "#f5f5f3",
+                        "border-radius": "16px",
+                        "padding": "24px 24px",
+                        "width": "50%",
+                        "height": "auto",
+                        "box-shadow": " rgba(0, 0, 0, 0.08) 0px 4px 6px -4px",
+                        "display": "none"
+                    },
+                    "selectAction": {
+                        "type": "JTD",
+                        "title": "View Inspections",
+                        "data": {
+                            "dashboardId": "64138565b8b83c0034434506",
+                            "panelsToInclude": [],
+                            "args": {
+                                "displayDashboardsPane": false,
+                                "displayFilterPane": true,
+                                "drilledDashboardDisplayType": 2
+                            }
+                        }
+                    },
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "🔍 Inspections",
+                            "horizontalAlignment": "left",
+                            "style": {
+                                "color": "#000000",
+                                "font-size": "17px",
+                                "font-weight": 600,
+                                "margin-bottom": "6px"
+                            }
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-value-in' style='font-size:36px;font-weight:600;color:blue;'>{panel:Inspections}</span>",
+                            "horizontalAlignment": "left"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-change-in' style='font-size:12px;font-weight:500;color:#aaaaaa;'>Total Open {panel:Total Open Inspections}</span>",
+                            "horizontalAlignment": "left"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "class": "kpi-card",
+                    "style": {
+                        "background-color": "#f5f5f3",
+                        "border-radius": "16px",
+                        "padding": "24px 24px",
+                        "width": "50%",
+                        "height": "auto",
+                        "box-shadow": " rgba(0, 0, 0, 0.08) 0px 4px 6px -4px",
+                        "display": "none"
+                    },
+                    "selectAction": {
+                        "type": "JTD",
+                        "title": "View Maintenance",
+                        "data": {
+                            "dashboardId": "64138565b8b83c0034434506",
+                            "panelsToInclude": [],
+                            "args": {
+                                "displayDashboardsPane": false,
+                                "displayFilterPane": true,
+                                "drilledDashboardDisplayType": 2
+                            }
+                        }
+                    },
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "🚧 Maintenance",
+                            "horizontalAlignment": "left",
+                            "style": {
+                                "color": "#000000",
+                                "font-size": "17px",
+                                "font-weight": 600,
+                                "margin-bottom": "6px"
+                            }
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-value-ma' style='font-size:36px;font-weight:600;color:blue;'>{panel:Maintenance}</span>",
+                            "horizontalAlignment": "left"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-change-m' style='font-size:12px;font-weight:500;color:#aaaaaa;'>Total Open {panel:Total Open Maintenance}</span>",
+                            "horizontalAlignment": "left"
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "class": "kpi-card",
+                    "style": {
+                        "background-color": "#f5f5f3",
+                        "border-radius": "16px",
+                        "padding": "24px 24px",
+                        "width": "50%",
+                        "height": "20%",
+                        "box-shadow": " rgba(0, 0, 0, 0.08) 0px 4px 6px -4px",
+                        "display": "none"
+                    },
+                    "selectAction": {
+                        "type": "JTD",
+                        "title": "View Tasks",
+                        "data": {
+                            "dashboardId": "64138565b8b83c0034434506",
+                            "panelsToInclude": [],
+                            "args": {
+                                "displayDashboardsPane": false,
+                                "displayFilterPane": true,
+                                "drilledDashboardDisplayType": 2
+                            }
+                        }
+                    },
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "☑️ Tasks",
+                            "horizontalAlignment": "left",
+                            "style": {
+                                "color": "#000000",
+                                "font-size": "17px",
+                                "font-weight": 600,
+                                "margin-bottom": "6px"
+                            }
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-value-ta' style='font-size:36px;font-weight:600;color:blue;'>{panel:Tasks}</span>",
+                            "horizontalAlignment": "left"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "<span id='helm-change-ta' style='font-size:12px;font-weight:500;color:#aaaaaa;'>Unscheduled {panel:Unscheduled Tasks}</span>",
+                            "horizontalAlignment": "left"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
